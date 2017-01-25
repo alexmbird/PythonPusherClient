@@ -28,7 +28,7 @@ class Pusher(object):
 
         self.url = self._build_url(key, secure, port)
 
-        self.connection = Connection(self._connection_handler, self.url, log_level=log_level, daemon=daemon, reconnect_interval=reconnect_interval)
+        self.connection = Connection(self._connection_handler, self.url, log_level=log_level, daemon=daemon, reconnect_interval=reconnect_interval, thread_name=thread_name)
 
     def connect(self):
         """Connect to Pusher"""
