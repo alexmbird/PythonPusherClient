@@ -1,4 +1,4 @@
-from threading import Thread, Timer
+from threading import Thread, Timer, current_thread
 import websocket
 import logging
 import time
@@ -78,7 +78,8 @@ class Connection(Thread):
         self.disconnect_called = True
         if self.socket:
             self.socket.close()
-        self.join()
+        if current_thread() != self:
+            self.join()
 
     def reconnect(self, reconnect_interval=None):
         if reconnect_interval is None:
