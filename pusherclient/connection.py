@@ -10,7 +10,7 @@ except ImportError:
 
 
 class Connection(Thread):
-    def __init__(self, event_handler, url, log_level=logging.INFO, daemon=True, reconnect_interval=10):
+    def __init__(self, event_handler, url, log_level=logging.INFO, daemon=True, reconnect_interval=10, thread_name='PythonPusherClient'):
         self.event_handler = event_handler
         self.url = url
 
@@ -58,6 +58,7 @@ class Connection(Thread):
 
         Thread.__init__(self)
         self.daemon = daemon
+        self.name   = thread_name
 
     def bind(self, event_name, callback):
         """Bind an event to a callback

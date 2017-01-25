@@ -19,7 +19,7 @@ class Pusher(object):
     client_id = 'PythonPusherClient'
     protocol = 6
 
-    def __init__(self, key, secure=True, secret=None, user_data=None, log_level=logging.INFO, daemon=True, port=None, reconnect_interval=10):
+    def __init__(self, key, secure=True, secret=None, user_data=None, log_level=logging.INFO, daemon=True, port=None, reconnect_interval=10, thread_name='PythonPusherClient'):
         self.key = key
         self.secret = secret
         self.user_data = user_data or {}
